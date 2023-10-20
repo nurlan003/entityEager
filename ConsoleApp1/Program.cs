@@ -44,15 +44,15 @@ LibraryDbContext libraryDbContext = new LibraryDbContext();
 
 //exercise3
 
-int BookSumCount = 0;
-foreach (var press in libraryDbContext.Presses)
+var selectedPressNames = new List<string> { "BHV", "Binom" };
+
+foreach (Press press in libraryDbContext.Presses.Include(press => press.Books).ToList())
 {
-    if (press.Name == "BHV" || press.Name == "BINOM") {
-        foreach (var book in press.Books)
-        {
-           
-        }
+    if (selectedPressNames.Contains(press.Name))
+    {
+        int totalPageCount = press.Books.Sum(book => book.Pages);
+        Console.WriteLine($"Press: {press.Name}, Total Page Count: {totalPageCount}");
     }
 }
-Console.WriteLine(  BookSumCount);
+
 
