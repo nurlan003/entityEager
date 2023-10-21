@@ -4,10 +4,12 @@ using ConsoleApp1.Modelss;
 using Microsoft.IdentityModel.Protocols;
 using System.Reflection;
 using Microsoft.EntityFrameworkCore;
-
-//EXERCISE1
+using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
+using System.Diagnostics;
 
 LibraryDbContext libraryDbContext = new LibraryDbContext();
+//EXERCISE1
+
 //foreach (Press press in libraryDbContext.Presses.Include(press => press.Books).ToList())
 //{
 //    Console.WriteLine($"press name:{press.Name}");
@@ -42,17 +44,116 @@ LibraryDbContext libraryDbContext = new LibraryDbContext();
 //}
 
 
-//exercise3
+//EXERCISE3
 
-var selectedPressNames = new List<string> { "BHV", "Binom" };
+//string pres1 = "BHV";
+//string pres2 = "Binom";
+//int totalBHVBinom = 0;
+//foreach (Press press in libraryDbContext.Presses.Include(press => press.Books).ToList())
+//{
+//    bool var1 = press.Name.Contains(pres1);
+//    bool var2 = press.Name.Contains(pres2);
 
-foreach (Press press in libraryDbContext.Presses.Include(press => press.Books).ToList())
-{
-    if (selectedPressNames.Contains(press.Name))
-    {
-        int totalPageCount = press.Books.Sum(book => book.Pages);
-        Console.WriteLine($"Press: {press.Name}, Total Page Count: {totalPageCount}");
-    }
-}
+//    if (var1)
+//    {
+//        int totalPageCount = press.Books.Sum(bk => bk.Pages);
+//        totalBHVBinom += totalPageCount;
+
+//    }
+
+//    if (var2)
+//    {
+//        int totalPageCount = press.Books.Sum(bk => bk.Pages);
+
+//        totalBHVBinom += totalPageCount;
+
+//    }
+
+
+//}
+//Console.WriteLine(  totalBHVBinom);
+
+
+//EXERCISE4
+//DateTime datein = new DateTime(2001, 1, 1);
+
+//foreach (Student std in libraryDbContext.Students.Include(st => st.SCards).ToList())
+//{
+
+//    foreach (var sCard in std.SCards.ToList())
+//    {
+//        int dateCompare = DateTime.Compare(datein, sCard.DateOut);
+
+//        if (dateCompare < 0)
+//        {
+//            Console.WriteLine(std.FirstName);
+//        }
+//    }
+//}
+
+
+//EXERCISE5
+//Console.WriteLine($"Students which worked with 'Windows 2000 registry' ");
+//foreach (Student std in libraryDbContext.Students.Include(st=>st.SCards).ToList())
+//{
+//	foreach (var sCard in std.SCards.ToList())
+//	{
+//		foreach (var bk in libraryDbContext.Books.ToList())
+//		{
+//			bool boolBook = bk.Name.Contains("Windows 2000 registry");
+//			if (boolBook)
+//			{
+//				if (sCard.IdBook == bk.Id)
+//				{
+//                    Console.WriteLine(	std.FirstName);
+//                }
+//			}
+//		}
+//	}
+//}
+
+
+//EXERCISE6
+
+//Console.WriteLine("Authors whose average number of pages is more than 600"); 
+//foreach (var ath in libraryDbContext.Authors.Include(att => att.Books).ToList())
+//{
+//    int totalBookCount = ath.Books.Count;
+//    int totalPageCount = ath.Books.Sum(bk => bk.Pages);
+//    int AVGPages = totalPageCount / totalBookCount;
+//    if (AVGPages > 600)
+//    {
+//        Console.WriteLine(ath.FirstName + " " + ath.LastName);
+//        Console.WriteLine("\n");
+//    }
+//}
+
+
+//EXERCISE7 
+//foreach (var pres in libraryDbContext.Presses.Include(pre=>pre.Books).ToList())
+//{
+//    int totalBookPagesCount = pres.Books.Sum(BK => BK.Pages);
+    
+//    if (totalBookPagesCount > 700)
+//    {
+//        Console.WriteLine(pres.Name);
+
+//    }
+  
+//}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

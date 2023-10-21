@@ -35,7 +35,7 @@ namespace ConsoleApp1.Context
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Data Source=STHQ0124-06;Initial Catalog=Library;User ID=admin;Password=admin;Connect Timeout=30;Encrypt=False;");
+                optionsBuilder.UseSqlServer("Data Source=STHQ0115-10;Initial Catalog=Library;User ID=admin;Password=admin;Connect Timeout=30;Encrypt=False;");
             }
         }
 
